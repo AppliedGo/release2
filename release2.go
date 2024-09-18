@@ -38,7 +38,7 @@ In the previous post, I used goreleaser to add binaries to a project release. No
 
 ## Convenience comes in packages
 
-There was a tiny problem with the macOS binary in the [previous post]({{< ref "/release" >}}) . As it is not signed by an Apple developer, it get quarantined when downloaded through a browser. So this time let's package the binary for delivery via Homebrew. Using a package manager is more convenient for the users anyway, and they also get updates delivered and can easily uninstall the package if they don't want to use it anymore.
+There was a tiny problem with the macOS binary in the [previous post]({{< ref "/post/release" >}}) . As it is not signed by an Apple developer, it get quarantined when downloaded through a browser. So this time let's package the binary for delivery via Homebrew. Using a package manager is more convenient for the users anyway, and they also get updates delivered and can easily uninstall the package if they don't want to use it anymore.
 
 
 ## Homebrew
