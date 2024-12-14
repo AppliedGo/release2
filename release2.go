@@ -49,7 +49,7 @@ There was a tiny problem with the macOS binary in the [previous post]({{< ref "/
 
 macOS users, at least the tech-savvy ones, know and love [Homebrew](https://brew.sh/), the Missing Package Manager. Moreover, Homebrew is also [available for Linux](https://docs.brew.sh/Homebrew-on-Linux). And I mention that here because gorleeaser can build Homebrew formulae for both macOS and Linux.
 
-Homebrew has a core repository of packages but also supports providing your own "[tap](https://docs.brew.sh/Taps)" for dispensing your freshly brewed binary, which is what I will  be using here. (If you really want your project listed in the Homebrew core repository, you can do so but the [process](https://docs.brew.sh/Formula-Cookbook) is quite involved, and `goreleaser` also does not generate valid `homebrew-core` formulas at the moment.)
+Homebrew has a core repository of packages but also supports providing your own "[tap](https://docs.brew.sh/Taps)" for dispensing your freshly brewed binary, which is what I will  be using here. (If you really want your project listed in the Homebrew core repository, you can do so, but the [process](https://docs.brew.sh/Formula-Cookbook) is quite involved, and `goreleaser` also does not generate valid `homebrew-core` formulas at the moment.)
 
 ### Let's start brewing
 
@@ -65,18 +65,18 @@ The first necessary entries are the name and owner of the GitHub or GitLab repos
 brews:
   -
     tap:
-      owner: appliedgocode
+      owner: appliedgo
       name: homebrew-tools
 ```
 
-`goreleaser` will now publish my formulae to a repository named "appliedgocode/homebrew-tools". The name of the tap itself is the same minus the "homebrew-" part: "appliedgocode/tools".
+With these settings, `goreleaser` generates and publishes a formula to a repository named "appliedgo/homebrew-tools". The name of the tap itself is the same minus the "homebrew-" part: "appliedgo/tools". (Side note: The `goman` repo is in my `appliedgocode` organization, but for a nicer tap name, I decided to place the Homebrew formulae repository in my `appliedgo` organization.
 
 If I wanted to have a tap for `goman` only, I could have named the repo "homebrew-goman". However, as I plan to provide more tools from the same tap, I chose the quite generic name "tools" here.
 
 Also, I want to avoid unnecessary repetition: \
-`    brew install appliedgocode/tools/goman`  \
+`    brew install appliedgo/tools/goman`  \
 sounds better than \
-`    brew install appliedgocode/goman/goman`.
+`    brew install appliedgo/goman/goman`.
 
 But that's just a matter of taste. I have come across quite a few such taps with the same name for tap and tool, and that's ok. We're not in a style contest here, are we?
 
@@ -128,8 +128,8 @@ So that's my complete but fairly minimal `brews` section in `.goreleaser.yml`:
 ```yaml
 brews:
   - tap:
-      owner: appliedgocode
-      name: tap
+      owner: appliedgo
+      name: homebrew-tools
     commit_author:
       name: christophberger
       email: my@github.email
@@ -145,7 +145,7 @@ brews:
 
 To prepare the release, I only need two last steps.
 
-1. I create my new Homebrew tap at github.com/appliedgocode/homebrew-tools.
+1. I create my new Homebrew tap at github.com/appliedgo/homebrew-tools.
 2. I create and push a new Git tag
 
 Now here comes the magic: I just need to push a new Git tag and run
@@ -161,7 +161,7 @@ Soooo convenient.
 I now just need to switch my brains from "tool publisher" to "Homebrew user" and install `goman`.
 
 ```sh
-brew tap appliedgocode/tools
+brew tap appliedgo/tools
 brew install goman
 ```
 
